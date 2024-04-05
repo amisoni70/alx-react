@@ -1,38 +1,54 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: 'development',
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "bundle.js",
   },
-  devtool: 'inline-source-map',
+  mode: "development",
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader']
-      }
-    ]
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        // type: 'asset/resource',
+        use: [
+          "file-loader",
+          {
+            loader: "image-webpack-loader",
+            options: {
+              bypassOnDebug: true, // webpack@1.x
+              disable: true, // webpack@2.x and newer
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"],
+      },
+    ],
+  },
+  resolve: {
+    extensions: ["*", ".js", ".jsx"],
   },
   devServer: {
-    static: path.resolve('./dist'),
+    static: "./dist",
     compress: true,
     open: true,
     hot: true,
     port: 8564,
   },
+  devtool: "inline-source-map",
   plugins: [
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: './dist/index.html',
+      name: "index.html",
       inject: false,
-    })
-  ]
+      template: "./dist/index.html",
+    }),
+  ],
 };
