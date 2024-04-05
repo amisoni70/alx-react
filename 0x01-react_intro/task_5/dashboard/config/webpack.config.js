@@ -24,5 +24,10 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  devServer: {
+       static: path.resolve('./dist'),
+       compress: true,
+       port: 8564,
+  },
 };
