@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -12,22 +13,26 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader'
-        ]
+        use: ['file-loader']
       }
     ]
   },
   devServer: {
-       static: path.resolve('./dist'),
-       compress: true,
-       port: 8564,
+    static: path.resolve('./dist'),
+    compress: true,
+    open: true,
+    hot: true,
+    port: 8564,
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      name: 'index.html',
+      template: './dist/index.html',
+      inject: false,
+    })
+  ]
 };
