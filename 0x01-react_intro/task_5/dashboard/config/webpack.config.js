@@ -46,8 +46,8 @@ module.exports = {
   devtool: "inline-source-map",
   plugins: [
     new HtmlWebpackPlugin({
-      name: "index.html",
-      inject: false,
+      filename: "index.html",
+      inject: true,
       template: "./dist/index.html",
     }),
   ],
