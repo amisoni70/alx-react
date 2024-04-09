@@ -1,15 +1,20 @@
+:root {
+  --color-brand: #e01d3f;
+}
+
 .Notifications {
-  padding: 1em;
-  border: 2px dashed red;
-  position: absolute;
-  top: 10px;
-  width: 95vw;
+  padding: 50px;
+  border: 3px solid var(--color-brand);
 }
 
-li[data="default"] {
-  color: blue;
+.Notifications button img {
+  width: 20px;
 }
 
-li[data="urgent"] {
-  color: red;
+[data-priority="default"] {
+  color: #210a61;
+}
+
+[data-priority="urgent"] {
+  color: #e01d3f;
 }
