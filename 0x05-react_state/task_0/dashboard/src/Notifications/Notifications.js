@@ -12,8 +12,12 @@ class Notifications extends Component {
     this.markAsRead = this.markAsRead.bind(this);
   }
 
+  // shouldComponentUpdate(nextProps) {
+  //   return nextProps.length > this.props.listNotifications.length;
+  // }
+
   shouldComponentUpdate(nextProps) {
-    return nextProps.length > this.props.listNotifications.length;
+    return nextProps.displayDrawer !== this.props.displayDrawer;
   }
 
   markAsRead(id) {
