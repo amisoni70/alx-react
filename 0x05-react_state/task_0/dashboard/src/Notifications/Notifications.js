@@ -23,10 +23,11 @@ class Notifications extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className={css(styles.menuItem)} onClick={this.props.handleDisplayDrawer}>
-          <p>Your notifications</p>
-        </div>
-        {this.props.displayDrawer ? (
+        {!this.props.displayDrawer ? (
+          <div className={css(styles.menuItem)} onClick={this.props.handleDisplayDrawer}>
+            <p>Your notifications</p>
+          </div>
+        ) : (
           <div className={css(styles.Notifications)}>
             <button
               style={{
@@ -57,7 +58,7 @@ class Notifications extends Component {
               })}
             </ul>
           </div>
-        ) : null}
+        )}
       </React.Fragment>
     );
   }
