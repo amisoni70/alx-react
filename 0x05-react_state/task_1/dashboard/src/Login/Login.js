@@ -48,17 +48,12 @@ function Login() {
 
 const styles = StyleSheet.create({
   "App-body": {
-    fontSize: "1rem",
-    padding: "2em",
-    height: "45%",
-    "@media (max-width: 900px)": {
-      display: "flex",
-      flexDirection: "column",
-    },
-  },
-
-  input: {
-    margin: "10px",
+      margin: "50px",
+      paddingBottom: "10px",
+      "@media (max-width: 900px)": {
+          display: "flex",
+          flexDirection: "column",
+        },
   },
 });
 
