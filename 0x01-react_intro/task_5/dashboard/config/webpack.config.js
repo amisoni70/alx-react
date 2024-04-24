@@ -1,34 +1,40 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
+  // entry: './dashboard/src/index.js',
+  entry: path.resolve(__dirname, '../src/index.js'),
   output: {
-    filename: "bundle.js",
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, '../dist'),
   },
-  mode: "development",
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, '../dist'),
+    },
+    hot: true,
+    historyApiFallback: true,
+  },
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        // type: 'asset/resource',
-        use: [
-          "file-loader",
-          {
-            loader: "image-webpack-loader",
-            options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true, // webpack@2.x and newer
-            },
-          },
-        ],
+        type: 'asset/resource',
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.html$/,
+        use: ['html-loader'],
+      },
+      {
+        test: /\.js$/,
         exclude: /node_modules/,
+<<<<<<< HEAD
         use: [
           {
             loader: 'babel-loader',
@@ -37,25 +43,28 @@ module.exports = {
             }
           }
         ],
+=======
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env','@babel/preset-react'],
+          },
+        },
+>>>>>>> 5ede1434d3cc0763b9cc6e6fff85d0aa73b84cb9
       },
     ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"],
+    extensions: ['.js', '.jsx'] // Add .jsx extension if needed
   },
-  devServer: {
-    static: "./dist",
-    compress: true,
-    open: true,
-    hot: true,
-    port: 8564,
-  },
-  devtool: "inline-source-map",
   plugins: [
     new HtmlWebpackPlugin({
-      filename: "index.html",
-      inject: true,
-      template: "./dist/index.html",
+      template: path.resolve(__dirname, '../dist/index.html'),
     }),
+    // new CleanWebpackPlugin(),
+    // new CopyWebpackPlugin({
+    //   patterns: [{ from: './dashboard/src/assets', to: 'assets' }], // Adjust as needed
+    // }),
   ],
+  devtool: 'inline-source-map',
 };
