@@ -34,12 +34,23 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
+<<<<<<< HEAD
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-react']
+            }
+          }
+        ],
+=======
         use: {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env','@babel/preset-react'],
           },
         },
+>>>>>>> 5ede1434d3cc0763b9cc6e6fff85d0aa73b84cb9
       },
     ],
   },
