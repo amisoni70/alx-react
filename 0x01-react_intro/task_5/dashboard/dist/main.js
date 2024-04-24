@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (7:2)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n| \\n| ReactDOM.render(\\n>   <React.StrictMode>\\n|     <div id=\\\"root-notifications\\\">\\n|       <Notifications />\");\n\n//# sourceURL=webpack://dashboard/./src/index.js?");
+eval("throw new Error(\"Module parse failed: Unexpected token (7:2)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n| \\n| ReactDOM.render(\\n>   <React.StrictMode>\\n|     <div>\\n|       <div id=\\\"root-notifications\\\">\");\n\n//# sourceURL=webpack://dashboard/./src/index.js?");
 
 /***/ })
 

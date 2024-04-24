@@ -5,10 +5,12 @@ import Notifications from "./Notifications/Notifications";
 
 ReactDOM.render(
   <React.StrictMode>
-    <div id="root-notifications">
-      <Notifications />
+    <div>
+      <div id="root-notifications">
+        <Notifications />
+      </div>
+      <App />
     </div>
-    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
