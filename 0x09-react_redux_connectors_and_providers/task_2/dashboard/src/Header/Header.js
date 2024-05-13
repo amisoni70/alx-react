@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import holberton_logo from "../assets/holberton-logo.jpg";
 import { StyleSheet, css } from "aphrodite";
-import { AppContext } from "../App/AppContext";
+// import { AppContext } from "../App/AppContext";
 import { connect } from "react-redux";
-import * as uiActionCreators from "../actions/uiActionCreators";
+import { logout } from "../actions/uiActionCreators";
 
 function Header () {
   const { user, logOut } = props;
@@ -58,8 +58,4 @@ export function mapStateToProps(state) {
   };
 }
 
-export const mapDispatchToProps =  {
-    logout: uiActionCreators.logout
-}
-
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { logout })(Header);
