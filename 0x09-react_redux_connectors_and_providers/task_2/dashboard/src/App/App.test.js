@@ -15,7 +15,6 @@ import { fromJS } from "immutable";
 import { createStore } from "redux";
 import uiReducer from "../reducers/uiReducer";
 
-
 describe('App Test', () => {
   let wrapper;
 
