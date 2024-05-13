@@ -2,9 +2,12 @@ import React, { useContext } from 'react';
 import holberton_logo from "../assets/holberton-logo.jpg";
 import { StyleSheet, css } from "aphrodite";
 import { AppContext } from "../App/AppContext";
+import { connect } from "react-redux";
+import * as uiActionCreators from "../actions/uiActionCreators";
 
 function Header () {
-  const { user, logOut } = useContext(AppContext);
+  const { user, logOut } = props;
+
     return (
         <>
         <div className={css(styles.appHeader)}>
@@ -49,4 +52,14 @@ const styles = StyleSheet.create({
   
 });
 
-export default Header;
+export function mapStateToProps(state) {
+  return {
+    user: state.get('user')
+  };
+}
+
+export const mapDispatchToProps =  {
+    logout: uiActionCreators.logout
+}
+
+export default connect(mapStateToProps)(Header);
