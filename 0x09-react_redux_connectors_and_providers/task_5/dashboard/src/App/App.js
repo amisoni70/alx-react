@@ -8,10 +8,9 @@ import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBot
 import BodySection from "../BodySection/BodySection";
 import { StyleSheet, css } from "aphrodite";
 import PropTypes from "prop-types";
-import { getLatestNotification } from "../utils/utils";
 import { AppContext, user } from "./AppContext";
 import { connect } from 'react-redux';
-import * as uiActionCreators from '../actions/uiActionCreators'
+import * as uiActionCreators from '../actions/uiActionCreators';
 
 
 class App extends React.Component {
@@ -22,20 +21,7 @@ class App extends React.Component {
       displayDrawer: false,
       user: user,
       logOut: this.logOut,
-
-      listNotifications : [
-        { id: 1, type: "default", value: "New course available" },
-        { id: 2, type: "urgent", value: "New resume available" },
-        { id: 3, type: "urgent", html: getLatestNotification() },
-      ],
     };
-
-    // this.handleKeyPress = this.handleKeyPress.bind(this);
-    // this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
-    // this.handleHideDrawer = this.handleHideDrawer.bind(this);
-    // this.logIn = this.logIn.bind(this);
-    // this.logOut = this.logOut.bind(this);
-    this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
   }
 
   listCourses= [
@@ -51,14 +37,6 @@ class App extends React.Component {
       this.props.logOut();
     }
   }
-
-  // handleDisplayDrawer() {
-  //   this.setState({ displayDrawer: true });
-  // }
-
-  // handleHideDrawer() {
-  //   this.setState({ displayDrawer: false });
-  // }
 
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyPress);
@@ -82,11 +60,6 @@ class App extends React.Component {
     this.setState({
       user: user,
     });
-  }
-
-  markNotificationAsRead(id) {
-    const newList = this.state.listNotifications.filter((notification) => notification.id !== id);
-    this.setState({ listNotifications: newList});
   }
 
   render() {
