@@ -10,7 +10,7 @@ import { composeWihDevTools } from 'redux-devtools-extension';
 import rootReducer, { initialState } from './reducers/rootReducer';
 
 const reduxExtension = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || composeWihDevTools;
-const store = createStore(combineReducers(rootReducer), initialState, reduxExtension(applyMiddleware(thunk)));
+const store = createStore(combineReducer(rootReducer), initialState, reduxExtension(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <React.StrictMode>
